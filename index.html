@@ -4,40 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memórias de Infância | Fotografia de Aniversário Infantil</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              'brand-beige': '#FBF9F6', // Soft, warm off-white
-              'brand-rose': '#DABCB9', // Antique rose for accents
-              'brand-gold': '#EADDC6', // Light, elegant gold
-              'brand-dark': '#634543', // Warm dark brown for text and footer
-              'brand-green': '#22c55e', // CTA green
+              'brand-beige': '#FBF9F6',
+              'brand-rose': '#DABCB9',
+              'brand-gold': '#EADDC6',
+              'brand-dark': '#634543',
+              'brand-green': '#22c55e',
             },
             fontFamily: {
               'sans': ['Poppins', 'sans-serif'],
               'serif': ['Playfair Display', 'serif'],
             }
-          }
-        }
+          },
+        },
       }
     </script>
-  <script type="importmap">
+    <script type="importmap">
 {
   "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/"
+    "vite": "https://aistudiocdn.com/vite@^7.2.2"
   }
 }
 </script>
 </head>
   <body class="bg-white text-brand-dark">
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
