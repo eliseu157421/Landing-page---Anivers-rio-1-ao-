@@ -6,7 +6,7 @@ import Benefits from './components/Benefits';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 import CtaButton from './components/CtaButton';
-// import FloatingNav from './components/FloatingNav'; // <-- Removido
+// import FloatingNav from './components/FloatingNav'; // <-- LINHA QUE PRECISA SER REMOVIDA
 
 const App: React.FC = () => {
   return (
@@ -38,7 +38,7 @@ const App: React.FC = () => {
       <div id="footer">
         <Footer />
       </div>
-      {/* <FloatingNav /> <-- Removido */}
+      {/* <FloatingNav /> <-- TAG QUE PRECISA SER REMOVIDA */}
     </div>
   );
 };
