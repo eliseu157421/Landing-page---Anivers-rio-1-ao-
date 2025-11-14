@@ -1,26 +1,27 @@
 // components/MetaPixel.tsx (Versão CORRIGIDA para AMBIENTE VITE/REACT)
 
 import React, { useEffect } from 'react';
+// As importações de 'next/script' e 'next/router' FORAM REMOVIDAS.
 
-// O ID virá da Vercel: NEXT_PUBLIC_FACEBOOK_PIXEL_ID
+// O ID será 1890814624867929, vindo da Vercel
 const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID; 
 
 export const MetaPixel: React.FC = () => {
     
-    // O useEffect é usado para injetar o código JavaScript do Pixel uma única vez
+    // O useEffect executa o código JavaScript do Pixel apenas uma vez, após a renderização.
     useEffect(() => {
         if (!FB_PIXEL_ID) {
-            console.log("Meta Pixel ID não encontrado. Verifique a variável de ambiente.");
+            console.warn("Meta Pixel ID não encontrado. O rastreamento está desabilitado.");
             return;
         }
 
-        // Se o Pixel já existir (o script já foi carregado), apenas garante o PageView
+        // Se o Pixel já estiver no window (em caso de Fast Refresh ou re-montagem), evita reinicializar
         if ((window as any).fbq) {
-            (window as any).fbq('track', 'PageView');
-            return;
+             (window as any).fbq('track', 'PageView');
+             return;
         }
 
-        // --- Código de Injeção do Script ---
+        // --- Código de Injeção do Script (o código base que você recebeu da Meta) ---
         
         const pixelCode = `
             !function(f,b,e,v,n,t,s)
@@ -35,16 +36,16 @@ export const MetaPixel: React.FC = () => {
             fbq('track', 'PageView');
         `;
         
-        // Cria e anexa o elemento <script> ao <head> do documento
+        // Cria o elemento <script> e o insere no <head>
         const script = document.createElement('script');
         script.innerHTML = pixelCode;
         document.head.appendChild(script);
 
-    }, []); // O array vazio garante que o código execute apenas na montagem
+    }, []); // O array vazio [] garante que o código execute APENAS NA MONTAGEM
 
     if (!FB_PIXEL_ID) return null; 
 
-    // O código noscript é retornado como um componente React
+    // O código noscript é retornado como um componente React normal.
     return (
         <noscript>
             <img 
@@ -52,7 +53,7 @@ export const MetaPixel: React.FC = () => {
                 width="1" 
                 style={{ display: 'none' }} 
                 src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
-                alt="Meta Pixel"
+                alt="Meta Pixel Noscript"
             />
         </noscript>
     );
